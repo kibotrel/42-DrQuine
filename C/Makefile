@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: demonwaves <demonwaves@student.42.fr>      +#+  +:+       +#+         #
+#    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/09/10 16:16:29 by kibotrel          #+#    #+#              #
-#    Updated: 2020/12/17 09:12:41 by demonwaves       ###   ########.fr        #
+#    Created: 2020/12/17 09:26:52 by kibotrel          #+#    #+#              #
+#    Updated: 2020/12/17 09:52:36 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,11 @@ YELLOW			= \033[33m
 
 #------------------------------------ FILES -----------------------------------#
 
-SRCS			:= Colleen.c
+S_COLLEEN		= Colleen.c
+O_COLLEEN		= $(S_COLLEEN:.c=.o)
 
-OBJS			= $(SRCS:.c=.o)
+S_GRACE			= Grace.c
+O_GRACE			= $(S_GRACE:.c=.o)
 
 #--------------------------------- COMPILATION --------------------------------#
 
@@ -48,26 +50,32 @@ CFLAGS			= -Wall -Wextra -Werror
 	@echo "$(YELLOW)      - Compiling :$(RESET)" $<
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-# Implicit make rule simply using dependancies to compile our project.
+# Implicit make rule simply to compile the different quines.
 
-all: $(COLLEEN)
+all: $(COLLEEN) $(GRACE)
 
-$(COLLEEN): $(OBJS)
+$(COLLEEN): $(O_COLLEEN)
 	@echo "$(YELLOW)\n      - Building $(RESET)$@ $(YELLOW)...\n$(RESET)"
-	@$(CC) $(CFLAGS) -o $@ $@.c
+	@$(CC) $(CFLAGS) -o $@ $(O_COLLEEN)
 	@echo "$(GREEN)***   Quine $@ successfully compiled   ***\n$(RESET)"
+
+$(GRACE): $(O_GRACE)
+	@echo "$(YELLOW)\n      - Building $(RESET)$@ $(YELLOW)...\n$(RESET)"
+	@$(CC) $(CFLAGS) -o $@ $(O_GRACE)
+	@echo "$(GREEN)***   Quine $@ successfully compiled   ***\n$(RESET)"
+
 
 # Deleting all .o files.
 
 clean:
 	@echo "$(GREEN)***   Deleting all .o files   ...   ***\n$(RESET)"
-	@$(RM) $(OBJS)
+	@$(RM) $(O_COLLEEN) $(O_GRACE)
 
 # Deleting all executables and libraries after cleaning up all .o files.
 
 fclean: clean
 	@echo "$(GREEN)***   Deleting executable files from   ...   ***\n$(RESET)"
-	@$(RM) $(COLLEEN)
+	@$(RM) $(COLLEEN) $(GRACE)
 
 # Re-compile everything.
 
