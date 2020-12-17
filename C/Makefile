@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/17 09:26:52 by kibotrel          #+#    #+#              #
-#    Updated: 2020/12/17 11:26:00 by kibotrel         ###   ########.fr        #
+#    Updated: 2020/12/17 11:44:25 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ clean:
 	@echo "$(GREEN)***   Deleting all .o files   ...   ***\n$(RESET)"
 	@$(RM) $(O_COLLEEN) $(O_GRACE) $(O_SULLY)
 
-# Deleting all executables and libraries after cleaning up all .o files.
+# Deleting all executables after cleaning up all .o files.
 
 fclean: clean
 	@echo "$(GREEN)***   Deleting executable files from   ...   ***\n$(RESET)"
