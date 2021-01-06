@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/17 09:26:52 by kibotrel          #+#    #+#              #
-#    Updated: 2021/01/06 02:35:54 by kibotrel         ###   ########.fr        #
+#    Updated: 2021/01/06 03:26:59 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,9 @@ O_COLLEEN	= $(S_COLLEEN:.s=.o)
 S_GRACE		= Grace.s
 O_GRACE		= $(S_GRACE:.s=.o)
 
+S_SULLY		= Sully.s
+O_SULLY		= $(S_SULLY:.s=.o)
+
 
 #--------------------------------- COMPILATION --------------------------------#
 
@@ -54,7 +57,7 @@ CFLAGS		= -Wall -Wextra -Werror
 
 # Implicit make rule simply to compile the different quines.
 
-all: $(COLLEEN) $(GRACE)
+all: $(COLLEEN) $(GRACE) $(SULLY)
 
 $(COLLEEN): $(O_COLLEEN)
 	@echo "$(YELLOW)\n      - Building $(RESET)$@ $(YELLOW)...\n$(RESET)"
@@ -66,17 +69,22 @@ $(GRACE): $(O_GRACE)
 	@$(CC) $(CFLAGS) -o $@ $(O_GRACE)
 	@echo "$(GREEN)***   Quine $@ successfully compiled   ***\n$(RESET)"
 
+$(SULLY): $(O_SULLY)
+	@echo "$(YELLOW)\n      - Building $(RESET)$@ $(YELLOW)...\n$(RESET)"
+	@$(CC) $(CFLAGS) -o $@ $(O_SULLY)
+	@echo "$(GREEN)***   Quine $@ successfully compiled   ***\n$(RESET)"
+
 # Deleting all .o files.
 
 clean:
 	@echo "$(GREEN)***   Deleting all .o files   ...   ***\n$(RESET)"
-	@$(RM) $(O_COLLEEN) $(O_GRACE)
+	@$(RM) $(O_COLLEEN) $(O_GRACE) $(O_SULLY)
 
 # Deleting all executables after cleaning up all .o files.
 
 fclean: clean
 	@echo "$(GREEN)***   Deleting executable files from   ...   ***\n$(RESET)"
-	@$(RM) $(COLLEEN) $(GRACE) Grace_kid.*
+	@$(RM) $(COLLEEN) $(GRACE) $(SULLY) Grace_kid.* Sully_*
 
 # Re-compile everything.
 
