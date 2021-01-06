@@ -6,7 +6,7 @@
 #    By: kibotrel <kibotrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/17 09:26:52 by kibotrel          #+#    #+#              #
-#    Updated: 2020/12/17 11:44:25 by kibotrel         ###   ########.fr        #
+#    Updated: 2021/01/06 02:33:46 by kibotrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ clean:
 
 fclean: clean
 	@echo "$(GREEN)***   Deleting executable files from   ...   ***\n$(RESET)"
-	@$(RM) $(COLLEEN) $(GRACE) $(SULLY)
+	@$(RM) $(COLLEEN) $(GRACE) $(SULLY) Grace_kid.* Sully_*
 
 # Re-compile everything.
 
